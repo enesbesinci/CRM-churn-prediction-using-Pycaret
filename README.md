@@ -2,6 +2,8 @@
 
 Hello everyone, in this project I will give you some information about Customer Churn Prediction and we will build a Churn Prediction model together using Pycaret.
 
+![1_47xx1oXuebvYwZeB0OutuA](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/2720deef-03e6-4eb1-9773-18689639054b) [1]
+
 ## Introduction
 
 First of all, I would like to explain a concept known as **KPI** in the business world.
@@ -37,12 +39,34 @@ Competitive Advantage: Predicting customer loss in advance provides companies wi
 
 ## Stages of Customer Churn Analysis
 
+### How to Create Customer Churn Dataset for Machine Learning Model?
 
+First, we start by collecting the company's historical data to use in the Machine Learning model to predict Churn.
+
+Here are two very important terms used in almost every Customer Churn Analysis: Cut-off Point or Date and Performance Period or Window. I will explain them with a quote.
+
+![Screenshot 2023-12-10 204025](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/3df67a8e-9b9d-436d-aff2-48d6e74e2837) [2]
+
+Simply, the 12-month period you see in the graph is the input variables of our Machine Learning model, while the so-called Performance Window is the output variables of the model (yes=1 and no=0).
+
+I am adding one more graph for better understanding.
+
+![Screenshot 2023-12-10 204210](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/ea85bf23-cc96-44ad-89b7-cd00820a2f05) [3]
+
+This is followed by steps such as data cleaning, EDA, feature engineering, and model creation.
+
+Periodically or every month, depending on our objectives, Churn probabilities for each customer in the company's database are estimated through Machine Learning models and customers are categorized as Low Risk, Medium Risk and High Risk (there may be more categories). These results are transferred to the necessary departments and customers are tried to be kept in the company with various promotions, coupons or other tools.
 
 ## How to use Machine Learning in Customer Churn Analysis?
 
 
 
+
+## Sources:
+
+* [1] [Classification Problem: Customer Churn in a Bank by gokcesimge](https://medium.com/i%CC%87stanbuldatascienceacademy/classification-problem-customer-churn-in-a-bank-aab878ef87f7)
+* [2] [Customer Churn for any Timeline by Sai Teja Pasula](https://saitejapasula.medium.com/customer-churn-for-any-timeline-fbea57c146a7).
+* [3] [Predict Customer Churn using Pycaret by Moez Ali](https://towardsdatascience.com/predict-customer-churn-the-right-way-using-pycaret-8ba6541608ac)
 
 
 
