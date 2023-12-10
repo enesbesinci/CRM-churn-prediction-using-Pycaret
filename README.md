@@ -55,9 +55,11 @@ I am adding one more graph for better understanding.
 
 This is followed by steps such as data cleaning, EDA, feature engineering, and model creation.
 
-Periodically or every month, depending on our objectives, Churn probabilities for each customer in the company's database are estimated through Machine Learning models and customers are categorized as Low Risk, Medium Risk and High Risk (there may be more categories). These results are transferred to the necessary departments and customers are tried to be kept in the company with various promotions, coupons or other tools.
+Periodically or every month, depending on our objectives, Churn probabilities for each customer in the company's database are estimated through Machine Learning models and customers are categorized as Low Risk, Medium Risk and High Risk (there may be more categories).
 
-## How to use Machine Learning in Customer Churn Analysis?
+These results are transferred to the necessary departments and customers are tried to be kept in the company with various promotions, coupons or other tools.
+
+Now let's make an example using Python on Jupyter Lab.
 
 
 
