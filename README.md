@@ -243,7 +243,48 @@ Let's take a look at the variables that our model is paying more attention to in
 
 Let's look at the confusion matrix and analyze the model.
 
-![Screenshot 2023-12-12 195903](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/9cbc1d63-1f52-4eb5-8f42-3c58e6372b78)
+![Screenshot 2023-12-12 213856](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/0066b081-c363-43c6-8b5e-fb1dde3a039c)
+
+Now let's interpret the results, this part is very important, please read carefully.
+
+As you can see in the confusion matrix, 1346 customers are not really churned and we estimated them correctly. 227 customers are churned (1 in reality, but we estimated them as 0). 206 customers are not really churning, but we have categorized them as churning. Since these customers will not really churn, we will incur unnecessary costs to bring them back to the company (such as coupons or promotions). 334 customers will actually churn and we categorized them as churn, so we guessed right.
+
+
+
+
+
+
+Let's consider an example like this:
+
+For every customer we keep from churning, we earn $5000 in customer lifetime value. And let's say we give a $1000 gift card to every customer we think will churn.
+
+Our model says that a total of 540 customers (True Positive + False Positive) will churn, and we gave each customer a $1000 gift certificate. Suppose we prevented all of the customers who would have churned from churning. As a result, we gave a total of 1000 x 540 = $540,000 in gift certificates to all the customers we thought would churn, but we only generated 334 x 5000 = $1,670,000 in revenue. Our total profit is 1,670,000 - 540,000 = 1,130,000 dollars.
+
+What I mean is that it is not right to choose the appropriate model for the business problem by looking only at metrics like AUC, Recall, Accuracy. For each business problem, we can develop a metric that is appropriate for that problem.
+
+Now let's develop our own metric in Pycaret and find and use the model that brings the most profit/income for our business problem, not the model that gives the best AUC score as before.
+
+![Screenshot 2023-12-12 221110](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/398f7bc4-9187-4249-9233-97325156c330)
+
+Now let's look again at the performance of all models according to the "profit" metric we developed and select the appropriate model.
+
+![Screenshot 2023-12-12 221211](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/c5bfe338-1558-462a-beeb-4aad202f9d59)
+
+Logistic regression gives best results by profit metric. Let's interpret the model.
+
+![Screenshot 2023-12-12 221226](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/7a7937b2-1c2b-4a8e-8586-5e6b083717a1)
+
+(441 + 399) We predicted that 840 customers will Churn and we gave each of them a $1000 gift voucher. But as you can see, only 441 customers will actually Churn and assuming we win them all back, we will get 441 x 5000 = 2,205,000 in revenue from these customers.
+
+2.205.000 - 840.000 = 1.365.000 profit.
+
+As you can see, we have seen that we can earn higher revenues from models with lower "Accuracy" and "AUC". And now we can take action. We should contact the customers we think will churn and make them our active customers again.
+If we want, we can segment these customers as "High Risk", "Medium Risk" and "Low Risk" according to their Churn probability and apply different strategies.
+
+Thanks for reading.
+
+
+
 
 
 
