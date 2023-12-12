@@ -1,10 +1,10 @@
-# Churn Prediction using Pycaret
+# Churn Prediction using Pycaret on Python
 
-Hello everyone, in this project I will give you some information about Customer Churn Prediction and we will build a Churn Prediction model together using Pycaret.
+Hello everyone, in this project I will teach you about Customer Churn Prediction and build a Churn Prediction model using practical libraries in the field of machine learning such as Pycaret, Pandas Profiling.
 
 ![1_47xx1oXuebvYwZeB0OutuA](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/2720deef-03e6-4eb1-9773-18689639054b) [1]
 
-## Introduction
+## STEP 1:Introduction
 
 First of all, I would like to explain a concept known as **KPI** in the business world.
 
@@ -61,6 +61,215 @@ These results are transferred to the necessary departments and customers are tri
 
 Now let's make an example using Python on Jupyter Lab.
 
+## STEP 2: About the Dataset
+
+In this project, we will use the Telco Customer Churn Public Dataset from Kaggle and IBM.
+
+Telco Customer Churn Data contains information about a fictitious telco company that provided home phone and Internet services to 7043 customers in California in Q3. It shows which customers left or stayed with their service. [4]
+
+Dataset Source: https://www.kaggle.com/datasets/blastchar/telco-customer-churn
+
+---------------------------------------------------------------------------------------
+
+### Dataset Features
+
+**customerID** : Customer ID
+
+**gender** : Whether the customer is a male or a female
+
+**SeniorCitizen** : Whether the customer is a senior citizen or not (1, 0)
+
+**Partner** : Whether the customer has a partner or not (Yes, No)
+
+**Dependents** : Whether the customer has dependents or not (Yes, No)
+
+**tenure** : Number of months the customer has stayed with the company
+
+**PhoneService** : Whether the customer has a phone service or not (Yes, No)
+
+**MultipleLines** : Whether the customer has multiple lines or not (Yes, No, No phone service)
+
+**InternetService** : Customer’s internet service provider (DSL, Fiber optic, No)
+
+**OnlineSecurity** : Whether the customer has online security or not (Yes, No, No internet service)
+
+**OnlineBackup** : Whether the customer has online backup or not (Yes, No, No internet service)
+
+**DeviceProtection** : Whether the customer has device protection or not (Yes, No, No internet service)
+
+**TechSupport** : Whether the customer has tech support or not (Yes, No, No internet service)
+
+**StreamingTV** : Whether the customer has streaming TV or not (Yes, No, No internet service)
+
+**StreamingMovies** : Whether the customer has streaming movies or not (Yes, No, No internet service)
+
+**Contract** : The contract term of the customer (Month-to-month, One year, Two year)
+
+**PaperlessBilling** : Whether the customer has paperless billing or not (Yes, No)
+
+**PaymentMethod** : The customer’s payment method (Electronic check, Mailed check, Bank transfer (automatic), Credit card (automatic))
+
+**MonthlyCharges** : The amount charged to the customer monthly
+
+**TotalCharges** : The total amount charged to the customer
+
+**Churn** : Whether the customer churned or not (Yes or No)
+
+---------------------------------------------------------------------------------------
+
+## STEP 2: Data Understanding and EDA
+
+In this step, we will take an overview of the dataset and explore the relationships between customer variables and churn. We will use the "Pandas Profiling" library to do this. This Python library allows us to perform EDA with just a few lines of code.
+
+**Warning**: We will not do a detailed Exploratory Data Analysis as it is not the main topic of this article.
+
+First we need to import the necessary libraries and read the dataset, then we can get an overview of the dataset with the info() function.
+
+![Screenshot 2023-12-12 133916](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/d998ce9f-22aa-48c8-a3cb-ba9010352b6d)
+
+After we have seen the variable types, let's see the first 5 lines.
+
+![Screenshot 2023-12-12 134249](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/f35f97c8-170e-4c27-a2b4-c6c8084605f8)
+
+Instead of visualizing each variable individually during the EDA phase and writing functions for missing data or outliers, Pandas Profiling makes it easy to see information about the entire data set.
+
+![Screenshot 2023-12-12 134719](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/603cde81-ad46-41ac-b990-f36b445f7c54)
+
+Save the results in an HTML file.
+
+![Screenshot 2023-12-12 134815](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/34d61d6d-2c30-451c-ab6f-b885f8980ac2)
+
+Let's see the results shortly.
+
+![Screenshot 2023-12-12 134510](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/8215d1b3-f7bf-499a-8507-09e1bbe78aa5)
+
+Churn is our target feature to predict which customers have churned.
+
+![Screenshot 2023-12-12 134948](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/84b40fce-b596-47c5-a61a-a617a008b8c5)
+
+Our target feature "Churn" seems to be imbalanced, let's continue.
+
+Other numerical features:
+
+![Screenshot 2023-12-12 174109](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/d185934b-035e-436f-930f-ca5c906dbb11)
+
+![Screenshot 2023-12-12 174119](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/add2aaa2-7393-49f8-80b4-0069dfe402ff)
+
+I will not analyze all the variables, I will be uploading the HTML file to the Repo so that you can analyze it.
+
+Now let's see the effects of some variables on Churn.
+
+I keep all categorical and numeric variables in different lists to make visualizations faster.
+
+![Screenshot 2023-12-12 135509](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/935c70c0-dbd1-4ed0-8c8a-796eff943867)
+
+And after that we change the target values for visualizations from Yes-No to 1-0
+
+![Screenshot 2023-12-12 135518](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/ec629bb6-0ad0-4b4b-98c7-bf05d682f988)
+
+Let's look at how all the categorical variables interact with "Churn" with a simple for loop and analyze some of them.
+
+![Screenshot 2023-12-12 135721](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/c40c69fe-34be-460d-bd76-e3c9457161a5)
+
+The results:
+
+![Screenshot 2023-12-12 174826](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/10448627-290c-4745-83b0-016208463cd8)
+
+As you can see, there is no correlation between "Gender" and "Churn".
+
+Now let's look at other features that might be important.
+
+![Screenshot 2023-12-12 174902](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/842e6dfa-fa46-4e5b-b4f6-001b074c0120)
+
+We see that customers using "Fiber" as their Internet service have a much higher churn rate. This is actually unexpected, as these customers are using a higher quality service. However, many factors can cause this, such as price, quality of service, customer service, etc.
+
+Let's look at the relationship between "Contract" and "Churn".
+
+![Screenshot 2023-12-12 140656](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/14076fb7-13e6-45de-b4a5-54c73682eda6)
+
+As expected, the shorter contract means higher churn rate.
+
+Now let's look at the relationship between "Tenure" and Churn. Our expectation is that the two are inversely correlated. High Tenure means low Churn.
+
+![Screenshot 2023-12-12 145522](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/b33201e5-1372-4233-8d80-7f19b53a5a50)
+
+Exactly as we expected. A detailed analysis of all variables can be found in this article. Let's start building the model.
+
+Detailed analysis of all variables: https://medium.com/@zulfikarirham02/telco-customer-churn-prediction-using-machine-learning-and-deep-learning-8d1905b04980
+
+## STEP 3: Building a Classification Model to Predict Churn with Pycaret
+
+Let's see if there is any missing data in our data set.
+
+![Screenshot 2023-12-12 145959](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/093560a6-1cb4-4b10-b886-a89973a2f3f2)
+
+The results:
+
+![Screenshot 2023-12-12 150055](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/1b21eb5a-434f-4987-a557-f5c35a85418b)
+
+We only have 11 missing data in our "TotalCharges" column, but it doesn't matter, in this project we won't do any data preprocessing (outliers and missing data or feature engineering etc.) steps like in other projects, Pycaret will do that for us.
+
+But first, what is Pycaret?
+
+They describe themselves as follows: PyCaret is an open source, low-code machine learning library and end-to-end model management tool built in Python for automating machine learning workflows. PyCaret is known for its ease of use, simplicity, and ability to quickly and efficiently build and deploy end-to-end machine learning pipelines. To learn more about PyCaret, please visit their GitHub.
+
+GitHub/Pycaret: https://github.com/pycaret/pycaret
+
+Let's build a classification model using Pycaret. As you can see, I only gave Pycaret the target variable and the dataset, I also told it that the target variable is unbalanced and that it should not include a variable like "customerID" in the model. Pycaret will handle all the variable engineering, missing and outlier data, etc.
+
+![Screenshot 2023-12-12 181256](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/429ecc70-9638-44c1-99a6-a7c31da6c3d2)
+
+The result:
+
+![Screenshot 2023-12-12 181312](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/30c12af0-d2aa-4627-849b-682b4b0ea626)
+
+![Screenshot 2023-12-12 181349](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/e8095d0c-3100-4c14-abd5-fcc8ead59be5)
+
+As you can see, all data pre-processing steps were performed automatically by Pycaret.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -69,6 +278,7 @@ Now let's make an example using Python on Jupyter Lab.
 * [1] [Classification Problem: Customer Churn in a Bank by gokcesimge](https://medium.com/i%CC%87stanbuldatascienceacademy/classification-problem-customer-churn-in-a-bank-aab878ef87f7)
 * [2] [Customer Churn for any Timeline by Sai Teja Pasula](https://saitejapasula.medium.com/customer-churn-for-any-timeline-fbea57c146a7).
 * [3] [Predict Customer Churn using Pycaret by Moez Ali](https://towardsdatascience.com/predict-customer-churn-the-right-way-using-pycaret-8ba6541608ac)
+* [4] [About the Dataset](https://community.ibm.com/community/user/businessanalytics/blogs/steven-macko/2019/07/11/telco-customer-churn-1113)
 
 
 
