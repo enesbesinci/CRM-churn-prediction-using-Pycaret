@@ -4,7 +4,7 @@ Hello everyone, in this project I will teach you about Customer Churn Prediction
 
 ![1_47xx1oXuebvYwZeB0OutuA](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/2720deef-03e6-4eb1-9773-18689639054b) [1]
 
-## STEP 1:Introduction
+## STEP 1: Introduction
 
 First of all, I would like to explain a concept known as **KPI** in the business world.
 
@@ -226,6 +226,32 @@ The result:
 ![Screenshot 2023-12-12 181349](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/e8095d0c-3100-4c14-abd5-fcc8ead59be5)
 
 As you can see, all data pre-processing steps were performed automatically by Pycaret.
+
+Now let's train our model, the compare_models() function trains all the models in the Pycaret model repository and prints various evaluation metrics.
+
+![Screenshot 2023-12-12 195105](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/4c1d4db2-531f-489f-915a-5a74e43cb672)
+
+To see best parameters for the model:
+
+![Screenshot 2023-12-12 195431](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/2e54ee39-fe78-4c0b-8347-e052234637e2)
+
+At this point we can automatically tune the hyperparameters of the model if we want but for this project I won't. If you want to automatically tune the hyperparameters of your model you can use tune_model() function.
+
+Let's take a look at the variables that our model is paying more attention to in the prediction process.
+
+![Screenshot 2023-12-12 195706](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/64a480d8-3df1-4843-9ebc-22635452af8d)
+
+Let's look at the confusion matrix and analyze the model.
+
+![Screenshot 2023-12-12 195903](https://github.com/enesbesinci/CRM-churn-prediction-using-Pycaret/assets/110482608/9cbc1d63-1f52-4eb5-8f42-3c58e6372b78)
+
+
+
+
+
+
+
+
 
 
 
